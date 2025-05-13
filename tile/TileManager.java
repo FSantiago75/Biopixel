@@ -11,13 +11,13 @@ import main.GamePanel;
 
 public class TileManager {
     GamePanel gp;
-    Tile[] tile;
-    int map_tile_num[][];
+    public Tile[] tile;
+    public int mapTileNum[][];
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
         tile = new Tile[40];
-        map_tile_num = new int[gp.max_world_col][gp.max_world_row];
+        mapTileNum = new int[gp.max_world_col][gp.max_world_row];
         getTileImage();
         loadMap("/res/maps/map2.txt");
     }
@@ -125,6 +125,7 @@ public class TileManager {
 
             tile[33] = new Tile();
             tile[33].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/33waterstill.png"));
+            tile[33].colision = true;
 
             tile[34] = new Tile();
             tile[34].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/34watertopcorner.png"));
@@ -158,7 +159,7 @@ public class TileManager {
                 while(col < gp.max_world_col) {
                     String numbers[] = line.split(" ");
                     int num = Integer.parseInt(numbers[col]);
-                    map_tile_num[col][row] = num;
+                    mapTileNum[col][row] = num;
                     col++;
                 }
                 if(col == gp.max_world_col) {
@@ -176,7 +177,7 @@ public class TileManager {
         int world_row = 0;
 
         while(world_col < gp.max_world_col && world_row < gp.max_world_row) {
-            int tile_num = map_tile_num[world_col][world_row];
+            int tile_num = mapTileNum[world_col][world_row];
             int world_x = world_col * gp.tile_size;
             int world_y = world_row * gp.tile_size;
             int screen_x = world_x - gp.player.world_x + gp.player.screen_x;
