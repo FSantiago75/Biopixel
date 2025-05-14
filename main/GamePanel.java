@@ -1,31 +1,28 @@
 package main;
 
+import entity.Player;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-
 import javax.swing.JPanel;
-
-import entity.Entity;
-import entity.Player;
 import tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable{
 
     final int original_tile_size = 16;
-    final int scale = 4;
+    final int scale = 2;
     public final int tile_size = original_tile_size * scale;
 
-    public final int max_screen_col = 16;
-    public final int max_screen_row = 12;
+    public final int max_screen_col = 28;
+    public final int max_screen_row = 21;
     public final int screen_width = tile_size * max_screen_col;
     public final int screen_height = tile_size * max_screen_row;
 
-    public final int max_world_col = 50;
+    public final int max_world_col = 100;
     public final int max_world_row = 50;
-    public final int world_width = tile_size * max_screen_col;
-    public final int world_height = tile_size * max_screen_row;
+    public final int world_width = tile_size * max_world_col;
+    public final int world_height = tile_size * max_world_row;
 
     int fps = 60;
 
