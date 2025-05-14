@@ -1,16 +1,12 @@
 package entity;
 
-import main.KeyHandler;
-import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-
 import main.GamePanel;
+import main.KeyHandler;
 
 public class Player extends Entity {
     GamePanel gp;
@@ -37,9 +33,9 @@ public class Player extends Entity {
     }
 
     public void set_default_value() {
-        world_x = gp.tile_size * 25;
+        world_x = gp.tile_size * 50;
         world_y = gp.tile_size * 25;
-        speed = 10;
+        speed = 4;
         direction = "down";
     }
 
