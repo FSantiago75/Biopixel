@@ -23,10 +23,10 @@ public class Player extends Entity {
         screen_y = gp.screen_height/2 - (gp.tile_size/2);
         
         solidArea = new Rectangle();
-        solidArea.x = 12;
-        solidArea.y = 25;        
-        solidArea.width = 36;
-        solidArea.height = 36;
+        solidArea.x = 8;
+        solidArea.y = 16;        
+        solidArea.width = 8;
+        solidArea.height = 16;
 
         set_default_value();
         get_player_image();
@@ -113,11 +113,11 @@ public class Player extends Entity {
         }
         
         // CHECK TILE COLLISION
-        collisionON = false;
+        collisionOn = false;
         gp.cChecker.checkTile(this);
         
         // IF COLLISION IS FALSE, PLAYER CAN MOVE
-        if(collisionON == false) {
+        if(collisionOn == false) {
         	
         	switch(direction) {
         	case "up": world_y -= speed; break;
