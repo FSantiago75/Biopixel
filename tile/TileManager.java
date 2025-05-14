@@ -12,10 +12,11 @@ public class TileManager {
     GamePanel gp;
     public Tile[] tile;
     public int mapTileNum[][];
+    public int num_tile = 71;
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
-        tile = new Tile[40];
+        tile = new Tile[num_tile];
         mapTileNum = new int[gp.max_world_col][gp.max_world_row];
         getTileImage();
         loadMap("/res/maps/map1.csv");
@@ -143,6 +144,7 @@ public class TileManager {
 
             tile[38] = new Tile();
             tile[38].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/4grass1.png"));
+
 
         } catch (IOException e) {
             e.printStackTrace();
