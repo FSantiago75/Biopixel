@@ -19,8 +19,5 @@ public class Main {
         window.setVisible(true);
 
         game_panel.startGameThread();
-        //String testezinho = "fds";
-        //felipe gay d+
-        //sopinha ta boa
     }
 }
