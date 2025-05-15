@@ -6,6 +6,7 @@ import java.awt.event.KeyListener;
 public class KeyHandler implements KeyListener{
 
     public boolean up_pressed, left_pressed, down_pressed, right_pressed;
+    public int shift_pressed = 1;
     public String last_direction = "down_idle";
 
     @Override
@@ -28,6 +29,9 @@ public class KeyHandler implements KeyListener{
         if(code == KeyEvent.VK_D) {
             right_pressed = true;
         }
+        if(code == KeyEvent.VK_SHIFT) {
+            shift_pressed = 2;
+        }
     }
 
     @Override
@@ -49,6 +53,9 @@ public class KeyHandler implements KeyListener{
         if(code == KeyEvent.VK_D) {
             right_pressed = false;
             last_direction = "right_idle";
+        }
+        if(code == KeyEvent.VK_SHIFT) {
+            shift_pressed = 1;
         }
     }
     
