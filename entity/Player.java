@@ -33,8 +33,8 @@ public class Player extends Entity {
     }
 
     public void set_default_value() {
-        world_x = gp.tile_size * 50;
-        world_y = gp.tile_size * 25;
+        world_x = gp.tile_size * 70;
+        world_y = gp.tile_size * 48;
         speed = 2 * gp.scale;
         direction = "down";
     }
