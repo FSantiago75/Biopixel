@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
+import object.Object;
 import tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable{
@@ -30,17 +31,24 @@ public class GamePanel extends JPanel implements Runnable{
     KeyHandler key_handler = new KeyHandler();
     Thread game_thread;
     public CollisionCheckout cChecker = new CollisionCheckout(this);
+    public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this, key_handler);
+    public Object obj[] = new Object[10]; //Numero max de objetos ao mesmo tempo
 
     public GamePanel() {
-
         this.setPreferredSize(new Dimension(screen_width, screen_height));
         this.setBackground(Color.decode("#3e92d1"));
         this.setDoubleBuffered(true);
         this.addKeyListener(key_handler);
         this.setFocusable(true);
+        
+        setupGame();
     }
 
+    public void setupGame(){
+        aSetter.setObject();
+    }
+    
     public void startGameThread() {
 
         game_thread = new Thread(this);
@@ -79,6 +87,14 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void update() {
         player.update();
+        for(int i = 0; i < obj.length; i++) {
+            if(obj[i] != null && obj[i].visible) {
+                obj[i].update();
+                if(obj[i].isPlayerOnTop(this)) {
+                    obj[i].visible = false;
+                }
+            }
+        }
     }
 
     public void paintComponent(Graphics g) {
@@ -86,8 +102,12 @@ public class GamePanel extends JPanel implements Runnable{
         Graphics2D g2 = (Graphics2D)g;
 
         tile_manager.draw(g2);
+        for(int i = 0; i < obj.length; i++){
+            if(obj[i] != null){
+                obj[i].draw(g2, this);
+            }
+        }
         player.draw(g2);
-
         g2.dispose();
     }
 }
