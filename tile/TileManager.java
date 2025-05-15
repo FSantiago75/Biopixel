@@ -12,20 +12,21 @@ public class TileManager {
     GamePanel gp;
     public Tile[] tile;
     public int mapTileNum[][];
-    public int num_tile = 180;
+    public int num_tile = 200;
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
         tile = new Tile[num_tile];
         mapTileNum = new int[gp.max_world_col][gp.max_world_row];
         getTileImage();
-        loadMap("/res/maps/map1.csv");
+        loadMap("/res/maps/mapa correto02.csv");
     }
 
     public void getTileImage() {
         try {
             tile[0] = new Tile();
             tile[0].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile67.png"));
+            
 
             tile[1] = new Tile();
             tile[1].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile68.png"));
@@ -35,9 +36,11 @@ public class TileManager {
             
             tile[3] = new Tile();
             tile[3].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile1.png"));
+            tile[3].colision = true;
 
             tile[4] = new Tile();
             tile[4].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile2.png"));
+            tile[4].colision = true;
 
             tile[5] = new Tile();
             tile[5].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile3.png"));
@@ -101,54 +104,69 @@ public class TileManager {
 
             tile[25] = new Tile();
             tile[25].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile23.png"));
+            tile[25].colision = true;
 
             tile[26] = new Tile();
             tile[26].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile24.png"));
+            tile[26].colision = true;
 
             tile[27] = new Tile();
             tile[27].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile25.png"));
+            tile[27].colision = true;
 
             tile[28] = new Tile();
             tile[28].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile26.png"));
 
             tile[29] = new Tile();
             tile[29].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile27.png"));
+            tile[29].colision = true;
 
             tile[30] = new Tile();
             tile[30].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile28.png"));
 
             tile[31] = new Tile();
             tile[31].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile29.png"));
+            tile[31].colision = true;
 
             tile[32] = new Tile();
             tile[32].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile30.png"));
+            tile[32].colision = true;
 
             tile[33] = new Tile();
             tile[33].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile31.png"));
+            tile[33].colision = true;
 
             tile[34] = new Tile();
             tile[34].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile32.png"));
+            tile[34].colision = true;
 
             tile[35] = new Tile();
             tile[35].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile33.png"));
+            tile[35].colision = true;
 
             tile[36] = new Tile();
             tile[36].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile34.png"));
+            tile[36].colision = true;
 
             tile[37] = new Tile();
             tile[37].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile35.png"));
-
+            tile[37].colision = true;
+            
             tile[38] = new Tile();
             tile[38].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile36.png"));
+            tile[38].colision = true;
 
             tile[39] = new Tile();
             tile[39].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile37.png"));
+            tile[39].colision = true;
 
             tile[40] = new Tile();
             tile[40].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile38.png"));
+            tile[40].colision = true;
 
             tile[41] = new Tile();
             tile[41].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile39.png"));
+            tile[41].colision = true;
 
             tile[42] = new Tile();
             tile[42].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile40.png"));
@@ -191,33 +209,41 @@ public class TileManager {
 
             tile[55] = new Tile();
             tile[55].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile53.png"));
+            tile[55].colision = true;
 
             tile[56] = new Tile();
             tile[56].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile54.png"));
+            tile[56].colision = true;
 
             tile[57] = new Tile();
             tile[57].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile55.png"));
+            tile[57].colision = true;
 
             tile[58] = new Tile();
             tile[58].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile56.png"));
+            tile[58].colision = true;
 
             tile[59] = new Tile();
             tile[59].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile57.png"));
 
             tile[60] = new Tile();
             tile[60].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile58.png"));
+            tile[60].colision = true;
 
             tile[61] = new Tile();
             tile[61].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile59.png"));
+            tile[61].colision = true;
 
             tile[62] = new Tile();
             tile[62].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile60.png"));
+            tile[62].colision = true;
 
             tile[63] = new Tile();
             tile[63].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile61.png"));
 
             tile[64] = new Tile();
             tile[64].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile62.png"));
+            tile[64].colision = true;
 
             tile[65] = new Tile();
             tile[65].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile63.png"));
@@ -227,18 +253,22 @@ public class TileManager {
 
             tile[67] = new Tile();
             tile[67].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile65.png"));
+            tile[67].colision = true;
 
             tile[68] = new Tile();
             tile[68].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile66.png"));
+            tile[68].colision = true;
 
             tile[69] = new Tile();
             tile[69].image = ImageIO.read(getClass().getResourceAsStream("/res/player_idle/down (1).png"));
 
             tile[70] = new Tile();
             tile[70].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile70.png"));
+            tile[70].colision = true;
 
             tile[71] = new Tile();
             tile[71].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile71.png"));
+            tile[71].colision = true;
 
             tile[72] = new Tile();
             tile[72].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile78.png"));
@@ -284,12 +314,15 @@ public class TileManager {
 
             tile[86] = new Tile();
             tile[86].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile85.png"));
+            tile[86].colision = true;
 
             tile[87] = new Tile();
             tile[87].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile86.png"));
+            tile[87].colision = true;
 
             tile[88] = new Tile();
             tile[88].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile87.png"));
+            tile[88].colision = true;
 
             tile[89] = new Tile();
             tile[89].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile88.png"));
@@ -305,9 +338,11 @@ public class TileManager {
 
             tile[93] = new Tile();
             tile[93].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile94.png"));
+            tile[93].colision = true;
 
             tile[94] = new Tile();
             tile[94].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile93.png"));
+            tile[94].colision = true;
 
             tile[95] = new Tile();
             tile[95].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile113.png"));
@@ -326,6 +361,7 @@ public class TileManager {
 
             tile[100] = new Tile();
             tile[100].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile99.png"));
+            tile[100].colision = true;
 
             tile[101] = new Tile();
             tile[101].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile100.png"));
@@ -335,27 +371,33 @@ public class TileManager {
 
             tile[103] = new Tile();
             tile[103].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile102.png"));
+            tile[103].colision = true;
 
             tile[104] = new Tile();
             tile[104].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile103.png"));
 
             tile[105] = new Tile();
             tile[105].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile104.png"));
+            tile[105].colision = true;
 
             tile[106] = new Tile();
             tile[106].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile105.png"));
+            tile[106].colision = true;
 
             tile[107] = new Tile();
             tile[107].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile106.png"));
+            tile[107].colision = true;
 
             tile[108] = new Tile();
             tile[108].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile107.png"));
+            tile[108].colision = true;
 
             tile[109] = new Tile();
             tile[109].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile108.png"));
 
             tile[110] = new Tile();
             tile[110].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile109.png"));
+            tile[110].colision = true;
 
             tile[111] = new Tile();
             tile[111].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile110.png"));
@@ -371,15 +413,18 @@ public class TileManager {
 
             tile[115] = new Tile();
             tile[115].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile117.png"));
+            tile[115].colision = true;
 
             tile[116] = new Tile();
             tile[116].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile115.png"));
 
             tile[117] = new Tile();
             tile[117].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile116.png"));
+            tile[117].colision = true;
 
             tile[118] = new Tile();
             tile[118].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile118.png"));
+            tile[118].colision = true;
 
             tile[119] = new Tile();
             tile[119].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile119.png"));
@@ -431,48 +476,63 @@ public class TileManager {
 
             tile[135] = new Tile();
             tile[135].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/vegetation34.png"));
+            tile[135].colision = true;
 
             tile[136] = new Tile();
             tile[136].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/vegetation35.png"));
+            tile[136].colision = true;
 
             tile[137] = new Tile();
             tile[137].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/vegetation36.png"));
+            tile[137].colision = true;
 
             tile[138] = new Tile();
             tile[138].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/vegetation37.png"));
+            tile[138].colision = true;
 
             tile[139] = new Tile();
             tile[139].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/vegetation38.png"));
+            tile[139].colision = true;
 
             tile[140] = new Tile();
             tile[140].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/vegetation39.png"));
+            tile[140].colision = true;
 
             tile[141] = new Tile();
             tile[141].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/vegetation40.png"));
+            tile[141].colision = true;
 
             tile[142] = new Tile();
             tile[142].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/vegetation41.png"));
+            tile[142].colision = true;
 
             tile[143] = new Tile();
             tile[143].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/vegetation42.png"));
+            tile[143].colision = true;
 
             tile[144] = new Tile();
             tile[144].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/vegetation43.png"));
+            tile[144].colision = true;
 
             tile[145] = new Tile();
             tile[145].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/vegetation44.png"));
+            tile[145].colision = true;
 
             tile[146] = new Tile();
             tile[146].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/vegetation45.png"));
+            tile[146].colision = true;
 
             tile[147] = new Tile();
             tile[147].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/vegetation46.png"));
+            tile[147].colision = true;
 
             tile[148] = new Tile();
             tile[148].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/vegetation47.png"));
+            tile[148].colision = true;
 
             tile[149] = new Tile();
             tile[149].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/vegetation48.png"));
+            tile[149].colision = true;
 
             tile[150] = new Tile();
             tile[150].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/vegetation49.png"));
@@ -563,6 +623,72 @@ public class TileManager {
 
             tile[179] = new Tile();
             tile[179].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/vegetation21.png"));
+            
+            tile[180] = new Tile();
+            tile[180].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile180.png"));
+            
+            tile[181] = new Tile();
+            tile[181].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile181.png"));
+            
+            tile[182] = new Tile();
+            tile[182].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile182.png"));
+            
+            tile[183] = new Tile();
+            tile[183].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile183.png"));
+            
+            tile[184] = new Tile();
+            tile[184].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile184.png"));
+
+            tile[185] = new Tile();
+            tile[185].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/npc1.png"));
+
+            tile[186] = new Tile();
+            tile[186].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/npc2.png"));   
+
+            tile[187] = new Tile();
+            tile[187].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/npc3.png"));
+
+            tile[188] = new Tile();
+            tile[188].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/npc4.png"));
+
+            tile[189] = new Tile();
+            tile[189].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/npc5.png"));
+
+            tile[190] = new Tile();
+            tile[190].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile185.png"));
+
+            tile[191] = new Tile();
+            tile[191].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile186.png"));
+
+            tile[192] = new Tile();
+            tile[192].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile187.png"));
+
+            tile[193] = new Tile();
+            tile[193].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile188.png"));
+
+            tile[194] = new Tile();
+            tile[194].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile189.png"));
+
+            tile[195] = new Tile();
+            tile[195].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile190.png"));
+
+            tile[196] = new Tile();
+            tile[196].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile191.png"));
+            tile[196].colision = true;
+
+            tile[197] = new Tile();
+            tile[197].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile192.png"));
+            tile[197].colision = true;
+
+            tile[198] = new Tile();
+            tile[198].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile193.png"));
+            tile[198].colision = true;
+
+            tile[199] = new Tile();
+            tile[199].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile194.png"));
+            tile[199].colision = true;
+            
+
 
         } catch (IOException e) {
             e.printStackTrace();
