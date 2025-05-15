@@ -23,10 +23,10 @@ public class Player extends Entity {
         screen_y = gp.screen_height/2 - (gp.tile_size/2);
         
         solidArea = new Rectangle();
-        solidArea.x = 8;
-        solidArea.y = 16;        
-        solidArea.width = 8;
-        solidArea.height = 16;
+        solidArea.x = 3 * gp.scale;
+        solidArea.y = 9 * gp.scale;        
+        solidArea.width = 9 * gp.scale;
+        solidArea.height = 5 * gp.scale;
 
         set_default_value();
         get_player_image();
@@ -35,7 +35,7 @@ public class Player extends Entity {
     public void set_default_value() {
         world_x = gp.tile_size * 50;
         world_y = gp.tile_size * 25;
-        speed = 4;
+        speed = 2 * gp.scale;
         direction = "down";
     }
 
