@@ -10,6 +10,10 @@ import object.OBJ_Paper1;
 import object.OBJ_Paper2;
 import object.OBJ_Paper3;
 import object.OBJ_Paper4;
+import object.OBJ_Plastic1;
+import object.OBJ_Plastic2;
+import object.OBJ_Plastic3;
+import object.OBJ_Plastic4;
 
 public class AssetSetter {
     GamePanel gp;
@@ -66,8 +70,8 @@ public class AssetSetter {
         gp.obj[10].worldY = 3432;
 
         gp.obj[11] = new OBJ_Paper1(gp);
-        gp.obj[11].worldX = 3520;
-        gp.obj[11].worldY = 2688;
+        gp.obj[11].worldX = 5392;
+        gp.obj[11].worldY = 2736;
 
         gp.obj[12] = new OBJ_Paper2(gp);
         gp.obj[12].worldX = 4216;
@@ -113,8 +117,44 @@ public class AssetSetter {
         gp.obj[23].worldX = 5376;
         gp.obj[23].worldY = 3648;
 
-        gp.obj[24] = new OBJ_Paper1(gp);
-        gp.obj[24].worldX = 5392;
-        gp.obj[24].worldY = 2736;
+        gp.obj[24] = new OBJ_Plastic1(gp);
+        gp.obj[24].worldX = 1848;
+        gp.obj[24].worldY = 2848;
+
+        gp.obj[25] = new OBJ_Plastic2(gp);
+        gp.obj[25].worldX = 1016;
+        gp.obj[25].worldY = 3280;
+
+        gp.obj[26] = new OBJ_Plastic3(gp);
+        gp.obj[26].worldX = 312;
+        gp.obj[26].worldY = 3816;
+
+        gp.obj[27] = new OBJ_Plastic4(gp);
+        gp.obj[27].worldX = 584;
+        gp.obj[27].worldY = 3064;
+
+        gp.obj[28] = new OBJ_Plastic1(gp);
+        gp.obj[28].worldX = 1496;
+        gp.obj[28].worldY = 3680;
+
+        gp.obj[29] = new OBJ_Plastic2(gp);
+        gp.obj[29].worldX = 1992;
+        gp.obj[29].worldY = 3304;
+
+        gp.obj[30] = new OBJ_Plastic3(gp);
+        gp.obj[30].worldX = 1288;
+        gp.obj[30].worldY = 2976;
+
+        gp.obj[31] = new OBJ_Plastic4(gp);
+        gp.obj[31].worldX = 912;
+        gp.obj[31].worldY = 3968;
+
+        gp.obj[32] = new OBJ_Plastic1(gp);
+        gp.obj[32].worldX = 2272;
+        gp.obj[32].worldY = 3968;
+
+        gp.obj[33] = new OBJ_Plastic2(gp);
+        gp.obj[33].worldX = 584;
+        gp.obj[33].worldY = 3536;
     }
 }
