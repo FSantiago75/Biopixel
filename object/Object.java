@@ -24,31 +24,39 @@ public class Object {
         if (isPlayerOnTop(gp)) {
             switch (name) {
                 case "Boots":
-                    visible = false;
-                    gp.player.boots_on = true;
+                    if(gp.player.plastic_num == 10 && gp.key_handler.e_pressed == true) {
+                        visible = false;
+                        gp.player.boots_on = true;
+                    }
                     break;
                 case "Button":
-                    if(gp.player.fire_num == 8) {
+                    if(gp.player.fire_num == 8 && gp.key_handler.e_pressed == true) {
                         visible = false;
                         gp.tile_manager.loadMap("/res/maps/mapa correto02.csv");
                     }
                     break;
                 case "Fire":
-                    if(gp.player.can_on == true) {
+                    if(gp.player.can_on == true && gp.key_handler.e_pressed == true) {
                         gp.player.fire_num++;
                         visible = false;
                     }
                     break;
                 case "Can":
-                    if(gp.player.paper_num == 13) {
+                    if(gp.player.paper_num == 12 && gp.player.plastic_num == 10) {
                         gp.player.can_on = true;
                         visible = false;
                     }
                     break;
                 case "Paper":
-                    if (gp.key_handler.e_pressed == true) {
+                    if (gp.key_handler.e_pressed == true && gp.player.plastic_num == 10) {
                         visible = false;
                         gp.player.paper_num++;
+                    }
+                    break;
+                case "Plastic":
+                    if (gp.key_handler.e_pressed == true) {
+                        gp.player.plastic_num++;
+                        visible = false;
                     }
                     break;
                 default:
@@ -76,9 +84,10 @@ public class Object {
 
     public boolean isPlayerOnTop(GamePanel gp) {
         // Verifica se o jogador está sobre o objeto
-        return gp.player.world_x + gp.tile_size/2 > worldX && 
-               gp.player.world_x < worldX + gp.tile_size/2 && 
-               gp.player.world_y + gp.tile_size/2 > worldY && 
-               gp.player.world_y < worldY + gp.tile_size/2;
+        return gp.player.world_x + gp.tile_size*1.5 > worldX && 
+               gp.player.world_x < worldX + gp.tile_size*1.5 && 
+               gp.player.world_y + gp.tile_size*1.5 > worldY && 
+               gp.player.world_y < worldY + gp.tile_size*1.5;
+
     }
 } 
