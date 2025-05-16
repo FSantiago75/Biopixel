@@ -5,7 +5,7 @@ import object.AOBJ_BigFire;
 import object.AOBJ_Fire;
 import object.OBJ_Button;
 import object.OBJ_boots;
-import object.OBJ_glass;
+import object.OBJ_Can;
 
 public class AssetSetter {
     GamePanel gp;
@@ -53,12 +53,12 @@ public class AssetSetter {
         gp.obj[8].worldX = 4496;
         gp.obj[8].worldY = 3816;
 
-        gp.obj[9] = new OBJ_glass(gp);
-        gp.obj[9].worldX = 4696;
-        gp.obj[9].worldY = 3816; 
+        gp.obj[9] = new OBJ_Button(gp);
+        gp.obj[9].worldX = 4096;
+        gp.obj[9].worldY = 1024;
 
-        gp.obj[10] = new OBJ_Button(gp);
+        gp.obj[10] = new OBJ_Can(gp);
         gp.obj[10].worldX = 4096;
-        gp.obj[10].worldY = 1024;
+        gp.obj[10].worldY = 3816;
     }
 }
