@@ -17,8 +17,9 @@ public class GamePanel extends JPanel implements Runnable{
 
     public final int max_screen_col = 30;
     public final int max_screen_row = 15;
-    public final int screen_width = tile_size * max_screen_col;
-    public final int screen_height = tile_size * max_screen_row;
+    public int screen_width = tile_size * max_screen_col;
+    public int screen_height = tile_size * max_screen_row;
+
 
     public final int max_world_col = 100;
     public final int max_world_row = 70;
@@ -27,13 +28,13 @@ public class GamePanel extends JPanel implements Runnable{
 
     int fps = 60;
 
-    TileManager tile_manager = new TileManager(this);
+    public TileManager tile_manager = new TileManager(this);
     KeyHandler key_handler = new KeyHandler();
     Thread game_thread;
     public CollisionCheckout cChecker = new CollisionCheckout(this);
     public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this, key_handler);
-    public Object obj[] = new Object[10]; //Numero max de objetos ao mesmo tempo
+    public Object obj[] = new Object[20]; //Numero max de objetos ao mesmo tempo
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screen_width, screen_height));
@@ -45,6 +46,14 @@ public class GamePanel extends JPanel implements Runnable{
         setupGame();
     }
 
+    public void glass_on() {
+        screen_width = tile_size * max_screen_col * 2;
+        screen_height = tile_size * max_screen_row * 2;
+        this.setSize(new Dimension(screen_width, screen_height));
+        this.setBackground(Color.decode("#00000"));
+        this.revalidate();
+        this.repaint();
+    }
     public void setupGame(){
         aSetter.setObject();
     }

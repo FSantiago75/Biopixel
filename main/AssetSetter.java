@@ -3,6 +3,9 @@ package main;
 import java.util.Random;
 import object.AOBJ_BigFire;
 import object.AOBJ_Fire;
+import object.OBJ_Button;
+import object.OBJ_boots;
+import object.OBJ_glass;
 
 public class AssetSetter {
     GamePanel gp;
@@ -45,9 +48,17 @@ public class AssetSetter {
         gp.obj[7] = new AOBJ_BigFire(gp);
         gp.obj[7].worldX = 3840;
         gp.obj[7].worldY = 944;
+        
+        gp.obj[8] = new OBJ_boots(gp);
+        gp.obj[8].worldX = 4496;
+        gp.obj[8].worldY = 3816;
 
-        gp.obj[8] = new AOBJ_Fire(gp);
-        gp.obj[8].worldX = 4096;
-        gp.obj[8].worldY = 1000;
+        gp.obj[9] = new OBJ_glass(gp);
+        gp.obj[9].worldX = 4696;
+        gp.obj[9].worldY = 3816; 
+
+        gp.obj[10] = new OBJ_Button(gp);
+        gp.obj[10].worldX = 4096;
+        gp.obj[10].worldY = 1024;
     }
 }

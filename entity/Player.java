@@ -15,6 +15,7 @@ public class Player extends Entity {
     public final int screen_x;
     public final int screen_y;
     public int worldX;
+    public boolean boots_on = false;
 
     public Player(GamePanel gp, KeyHandler key_handler) {
         this.gp = gp;
@@ -98,20 +99,38 @@ public class Player extends Entity {
     }
 
     public void update() {
-        if(key_handler.up_pressed == true) {
-            direction = "up";
-            speed = 2 * gp.scale * key_handler.shift_pressed;
-        } else if(key_handler.left_pressed == true) {
-            direction = "left";
-            speed = 2 * gp.scale * key_handler.shift_pressed;
-        } else if(key_handler.down_pressed == true) {
-            direction = "down";
-            speed = 2 * gp.scale * key_handler.shift_pressed;
-        } else if(key_handler.right_pressed == true) {
-            direction = "right";
-           speed = 2 * gp.scale * key_handler.shift_pressed;
+        if(boots_on == true) {
+            if(key_handler.up_pressed == true) {
+                direction = "up";
+                speed = 2 * gp.scale * key_handler.shift_pressed;
+            } else if(key_handler.left_pressed == true) {
+                direction = "left";
+                speed = 2 * gp.scale * key_handler.shift_pressed;
+            } else if(key_handler.down_pressed == true) {
+                direction = "down";
+                speed = 2 * gp.scale * key_handler.shift_pressed;
+            } else if(key_handler.right_pressed == true) {
+                direction = "right";
+                speed = 2 * gp.scale * key_handler.shift_pressed;
+            } else {
+                direction = key_handler.last_direction;
+            }
         } else {
-            direction = key_handler.last_direction;
+            if(key_handler.up_pressed == true) {
+                direction = "up";
+                speed = 2 * gp.scale;
+            } else if(key_handler.left_pressed == true) {
+                direction = "left";
+                speed = 2 * gp.scale;
+            } else if(key_handler.down_pressed == true) {
+                direction = "down";
+                speed = 2 * gp.scale;
+            } else if(key_handler.right_pressed == true) {
+                direction = "right";
+                speed = 2 * gp.scale;
+            } else {
+                direction = key_handler.last_direction;
+            }
         }
         
         // CHECK TILE COLLISION
