@@ -19,6 +19,7 @@ public class Player extends Entity {
     public boolean can_on = false;
     public int fire_num = 0;
     public int paper_num = 0;
+    public int plastic_num = 0;
 
     public Player(GamePanel gp, KeyHandler key_handler) {
         this.gp = gp;
