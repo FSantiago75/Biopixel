@@ -16,6 +16,7 @@ public class Player extends Entity {
     public final int screen_y;
     public int worldX;
     public boolean boots_on = false;
+    public int fire_num = 0;
 
     public Player(GamePanel gp, KeyHandler key_handler) {
         this.gp = gp;
@@ -149,7 +150,7 @@ public class Player extends Entity {
         }
         
         // Mostrar coordenadas do player
-        System.out.println("Player X: " + world_x + " Y: " + world_y);
+        //System.out.println("Player X: " + world_x + " Y: " + world_y);
         
         sprite_counter++;
         

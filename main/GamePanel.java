@@ -46,14 +46,7 @@ public class GamePanel extends JPanel implements Runnable{
         setupGame();
     }
 
-    public void glass_on() {
-        screen_width = tile_size * max_screen_col * 2;
-        screen_height = tile_size * max_screen_row * 2;
-        this.setSize(new Dimension(screen_width, screen_height));
-        this.setBackground(Color.decode("#00000"));
-        this.revalidate();
-        this.repaint();
-    }
+
     public void setupGame(){
         aSetter.setObject();
     }
@@ -87,7 +80,7 @@ public class GamePanel extends JPanel implements Runnable{
             }
 
             if(timer >= 1000000000) {
-                System.out.println("FPS: " + draw_count);
+                //System.out.println("FPS: " + draw_count);
                 draw_count = 0;
                 timer = 0;
             }
@@ -100,7 +93,7 @@ public class GamePanel extends JPanel implements Runnable{
             if(obj[i] != null && obj[i].visible) {
                 obj[i].update();
                 if(obj[i].isPlayerOnTop(this)) {
-                    obj[i].visible = false;
+                    //obj[i].visible = false;
                 }
             }
         }

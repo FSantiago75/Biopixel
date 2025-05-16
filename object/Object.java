@@ -13,14 +13,13 @@ public class Object {
     public boolean visible = true;
     protected GamePanel gp;
     KeyHandler key_handler;
-    public int fire_num = 0;
 
     public Object(GamePanel gp) {
         this.gp = gp;
     }
 
     public void update() {
-        System.out.println(fire_num);
+        //System.out.println(gp.player.fire_num);
         // Verifica se o jogador está sobre o objeto
         if (isPlayerOnTop(gp)) {
             switch (name) {
@@ -28,18 +27,14 @@ public class Object {
                     visible = false;
                     gp.player.boots_on = true;
                     break;
-                case "Glass":
-                    visible = false;
-                    gp.glass_on();
-                    break;
                 case "Button":
-                    if(fire_num == 8) {
+                    if(gp.player.fire_num == 8) {
                         visible = false;
                         gp.tile_manager.loadMap("/res/maps/map1.csv");
                     }
                     break;
                 case "Fire":
-                    fire_num += 1;
+                    gp.player.fire_num++;
                     visible = false;
                     break;
                 default:
