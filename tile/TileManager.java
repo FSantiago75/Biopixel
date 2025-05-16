@@ -12,14 +12,14 @@ public class TileManager {
     GamePanel gp;
     public Tile[] tile;
     public int mapTileNum[][];
-    public int num_tile = 200;
+    public int num_tile = 250;
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
         tile = new Tile[num_tile];
         mapTileNum = new int[gp.max_world_col][gp.max_world_row];
         getTileImage();
-        loadMap("/res/maps/mapa correto02.csv");
+        loadMap("/res/maps/mapa pre att.csv");
     }
 
     public void getTileImage() {
@@ -687,6 +687,10 @@ public class TileManager {
             tile[199] = new Tile();
             tile[199].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tile194.png"));
             tile[199].colision = true;
+
+            tile[200] = new Tile();
+            tile[200].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/button1v1.png"));
+
             
 
 
