@@ -19,7 +19,7 @@ public class Object {
     }
 
     public void update() {
-        //System.out.println(gp.player.fire_num);
+        System.out.println(gp.player.paper_num);
         // Verifica se o jogador está sobre o objeto
         if (isPlayerOnTop(gp)) {
             switch (name) {
@@ -30,12 +30,26 @@ public class Object {
                 case "Button":
                     if(gp.player.fire_num == 8) {
                         visible = false;
-                        gp.tile_manager.loadMap("/res/maps/map1.csv");
+                        gp.tile_manager.loadMap("/res/maps/mapa correto02.csv");
                     }
                     break;
                 case "Fire":
-                    gp.player.fire_num++;
-                    visible = false;
+                    if(gp.player.can_on == true) {
+                        gp.player.fire_num++;
+                        visible = false;
+                    }
+                    break;
+                case "Can":
+                    if(gp.player.paper_num == 13) {
+                        gp.player.can_on = true;
+                        visible = false;
+                    }
+                    break;
+                case "Paper":
+                    if (gp.key_handler.e_pressed == true) {
+                        visible = false;
+                        gp.player.paper_num++;
+                    }
                     break;
                 default:
                     break;

@@ -29,12 +29,12 @@ public class GamePanel extends JPanel implements Runnable{
     int fps = 60;
 
     public TileManager tile_manager = new TileManager(this);
-    KeyHandler key_handler = new KeyHandler();
+    public KeyHandler key_handler = new KeyHandler();
     Thread game_thread;
     public CollisionCheckout cChecker = new CollisionCheckout(this);
     public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this, key_handler);
-    public Object obj[] = new Object[20]; //Numero max de objetos ao mesmo tempo
+    public Object obj[] = new Object[30]; //Numero max de objetos ao mesmo tempo
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screen_width, screen_height));
