@@ -1,5 +1,6 @@
 package entity;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -33,10 +34,10 @@ public class Player extends Entity {
         screen_y = gp.screen_height/2 - (gp.tile_size/2);
         
         solidArea = new Rectangle();
-        solidArea.x = 3 * gp.scale;
+        solidArea.x = 6 * gp.scale;
         solidArea.y = 9 * gp.scale;        
-        solidArea.width = 9 * gp.scale;
-        solidArea.height = 5 * gp.scale;
+        solidArea.width = 3 * gp.scale;
+        solidArea.height = 4 * gp.scale;
 
         set_default_value();
         get_player_image();
@@ -397,5 +398,8 @@ public class Player extends Entity {
             
         }
         g2.drawImage(image, screen_x, screen_y, gp.tile_size, gp.tile_size, null);
+        // Desenha a área de colisão em vermelho
+        // g2.setColor(Color.RED);
+        // g2.drawRect(screen_x + solidArea.x, screen_y + solidArea.y, solidArea.width, solidArea.height);
     }
 }

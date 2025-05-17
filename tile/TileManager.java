@@ -691,6 +691,12 @@ public class TileManager {
             tile[200] = new Tile();
             tile[200].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/button1v1.png"));
 
+            tile[201] = new Tile();
+            tile[201].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/button1v1.png"));
+
+            tile[202] = new Tile();
+            tile[202].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/button1v1.png"));
+
             tile[209] = new Tile();
             tile[209].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/fence7.png"));
             tile[209].colision = true;
