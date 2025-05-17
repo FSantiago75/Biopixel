@@ -32,6 +32,7 @@ public class GamePanel extends JPanel implements Runnable{
     public KeyHandler key_handler = new KeyHandler();
     Thread game_thread;
     public CollisionCheckout cChecker = new CollisionCheckout(this);
+    public UI ui = new UI(this);
     public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this, key_handler);
     public Object obj[] = new Object[40]; //Numero max de objetos ao mesmo tempo
@@ -110,6 +111,7 @@ public class GamePanel extends JPanel implements Runnable{
             }
         }
         player.draw(g2);
+        ui.draw(g2);
         g2.dispose();
     }
 }
