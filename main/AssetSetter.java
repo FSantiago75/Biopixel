@@ -4,8 +4,14 @@ import java.util.Random;
 import object.AOBJ_BigFire;
 import object.AOBJ_Fire;
 import object.OBJ_Button;
-import object.OBJ_boots;
 import object.OBJ_Can;
+import object.OBJ_NPC1;
+import object.OBJ_NPC2;
+import object.OBJ_NPC3;
+import object.OBJ_NPC4;
+import object.OBJ_NPC5;
+import object.OBJ_NPC6;
+import object.OBJ_NPC7;
 import object.OBJ_Paper1;
 import object.OBJ_Paper2;
 import object.OBJ_Paper3;
@@ -14,13 +20,7 @@ import object.OBJ_Plastic1;
 import object.OBJ_Plastic2;
 import object.OBJ_Plastic3;
 import object.OBJ_Plastic4;
-import object.OBJ_NPC1;
-import object.OBJ_NPC2;
-import object.OBJ_NPC3;
-import object.OBJ_NPC4;
-import object.OBJ_NPC5;
-import object.OBJ_NPC6;
-import object.OBJ_NPC7;
+import object.OBJ_boots;
 
 public class AssetSetter {
     GamePanel gp;
@@ -70,7 +70,7 @@ public class AssetSetter {
 
         gp.obj[9] = new OBJ_Button(gp);
         gp.obj[9].worldX = 4096;
-        gp.obj[9].worldY = 1024;
+        gp.obj[9].worldY = 1020;
 
         gp.obj[10] = new OBJ_Can(gp);
         gp.obj[10].worldX = 4096;
@@ -109,8 +109,8 @@ public class AssetSetter {
         gp.obj[17].worldY = 3808;
 
         gp.obj[18] = new OBJ_Paper4(gp);
-        gp.obj[18].worldX = 5896;
-        gp.obj[18].worldY = 4040;
+        gp.obj[18].worldX = 5960;
+        gp.obj[18].worldY = 3904;
 
         gp.obj[19] = new OBJ_Paper1(gp);
         gp.obj[19].worldX = 3512;
