@@ -2,9 +2,12 @@ package entity;
 
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import main.GamePanel;
 
 public class Entity {
     
+    GamePanel gp;
+
     public int world_x, world_y;
     public int speed;
 
@@ -15,5 +18,6 @@ public class Entity {
     public int sprite_num = 1;
     
     public Rectangle solidArea;
+
     public boolean collisionOn = false;
 }

@@ -20,9 +20,13 @@ public class Player extends Entity {
     public int fire_num = 0;
     public int paper_num = 0;
     public int plastic_num = 0;
-
+    public int max_paper = 12;
+    public int max_plastic = 10;
+    public int max_fire = 8;
     public Player(GamePanel gp, KeyHandler key_handler) {
+
         this.gp = gp;
+
         this.key_handler = key_handler;
 
         screen_x = gp.screen_width/2 - (gp.tile_size/2);
