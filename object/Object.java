@@ -30,7 +30,7 @@ public class Object {
                 case "Button":
                     if(gp.player.fire_num == 8) {
                         visible = false;
-                        gp.tile_manager.loadMap("/res/maps/map1.csv");
+                        gp.tile_manager.loadMap("/res/maps/mapa correto02.csv");
                     }
                     break;
                 case "Fire":

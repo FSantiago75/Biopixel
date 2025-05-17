@@ -6,6 +6,13 @@ import object.AOBJ_Fire;
 import object.OBJ_Button;
 import object.OBJ_boots;
 import object.OBJ_Can;
+import object.OBJ_NPC1;
+import object.OBJ_NPC2;
+import object.OBJ_NPC3;
+import object.OBJ_NPC4;
+import object.OBJ_NPC5;
+import object.OBJ_NPC6;
+import object.OBJ_NPC7;
 
 public class AssetSetter {
     GamePanel gp;
@@ -57,8 +64,33 @@ public class AssetSetter {
         gp.obj[9].worldX = 4096;
         gp.obj[9].worldY = 1024;
 
-        gp.obj[10] = new OBJ_Can(gp);
-        gp.obj[10].worldX = 4096;
-        gp.obj[10].worldY = 3816;
+        gp.obj[10] = new OBJ_NPC1(gp);
+        gp.obj[10].worldX = 4992;
+        gp.obj[10].worldY = 3520;
+
+        gp.obj[69] = new OBJ_NPC2(gp);
+        gp.obj[69].worldX = 4672;
+        gp.obj[69].worldY = 3520;
+
+        gp.obj[70] = new OBJ_NPC3(gp);
+        gp.obj[70].worldX = 4992;
+        gp.obj[70].worldY = 3456;
+
+        gp.obj[71] = new OBJ_NPC4(gp);
+        gp.obj[71].worldX = 4992;
+        gp.obj[71].worldY = 3584;
+
+        gp.obj[72] = new OBJ_NPC5(gp);
+        gp.obj[72].worldX = 2304;
+        gp.obj[72].worldY = 3776;
+
+        gp.obj[73] = new OBJ_NPC6(gp);
+        gp.obj[73].worldX = 5504;
+        gp.obj[73].worldY = 3264;
+
+        gp.obj[74] = new OBJ_NPC7(gp);
+        gp.obj[74].worldX = 1600;
+        gp.obj[74].worldY = 1600;
+        
     }
 }

@@ -19,7 +19,9 @@ public class Player extends Entity {
     public int fire_num = 0;
 
     public Player(GamePanel gp, KeyHandler key_handler) {
+
         this.gp = gp;
+
         this.key_handler = key_handler;
 
         screen_x = gp.screen_width/2 - (gp.tile_size/2);

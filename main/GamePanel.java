@@ -34,7 +34,7 @@ public class GamePanel extends JPanel implements Runnable{
     public CollisionCheckout cChecker = new CollisionCheckout(this);
     public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this, key_handler);
-    public Object obj[] = new Object[20]; //Numero max de objetos ao mesmo tempo
+    public Object obj[] = new Object[100]; //Numero max de objetos ao mesmo tempo
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screen_width, screen_height));
