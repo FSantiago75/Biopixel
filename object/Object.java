@@ -42,7 +42,7 @@ public class Object {
                     }
                     break;
                 case "Can":
-                    if(gp.player.paper_num == 12 && gp.player.plastic_num == 10) {
+                    if(gp.key_handler.e_pressed == true && gp.player.paper_num == 12 && gp.player.plastic_num == 10) {
                         gp.player.can_on = true;
                         visible = false;
                     }
