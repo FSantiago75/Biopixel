@@ -32,7 +32,7 @@ public class UI {
     double timeLimit = 300.00; // 5 minutos em segundos
     DecimalFormat dFormat = new DecimalFormat("#0.00");
     public boolean gameOver = false;
-    public boolean showRestartGame = false;
+    public static boolean showEndGame = false;
 
     public UI(GamePanel gp) {
         this.gp = gp;
@@ -145,7 +145,7 @@ public class UI {
             if (remainingTime <= 0) {
                 remainingTime = 0;
                 gameOver = true;
-                showRestartGame = true;
+                showEndGame = true;
                 // Aqui você pode adicionar a lógica de game over
             }
             
@@ -157,24 +157,32 @@ public class UI {
             g2.setFont(maruMonica);
             g2.setColor(Color.white);
             g2.drawString(timeString, gp.tile_size * 16, 85);
+        } else if (gameOver){
+            showEndGame = true;
         }
 
-        if (showRestartGame) {
-            g2.setFont(maruMonica);
-            g2.setColor(new Color(0, 0, 0, 150));
-            g2.fillRect(0, 0, gp.screen_height, gp.screen_width);
+        if (showEndGame) {
+            // Tela preta
+            g2.setColor(Color.BLACK);
+            g2.fillRect(0, 0, gp.screen_width, gp.screen_height);
 
-            g2.setColor(Color.WHITE);
+            // Texto branco centralizado
+            g2.setColor(gp.player.usinaRecarregada ? Color.GREEN : Color.RED);
             g2.setFont(new Font("Arial", Font.BOLD, 48));
-            String textoGameOver = gp.player.usinaRecarregada ? "VOCÊ VENCEU, A CIDADE FOI SALVA!" : "GAME OVER";
-            int x = centralizarTexto(textoGameOver, g2);
-            g2.drawString(textoGameOver, x, gp.screen_width / 2 - 50);
 
-            g2.setFont(new Font("Arial", Font.PLAIN, 24));
-            String textoReiniciar = "Aperte R para reiniciar";
-            x = centralizarTexto(textoReiniciar, g2);
-            g2.drawString(textoReiniciar, x, gp.screen_width / 2);
-        }
+            String textoGameOver = gp.player.usinaRecarregada ? "VOCÊ VENCEU, A CIDADE FOI SALVA!" : "GAME OVER";
+
+            FontMetrics fm = g2.getFontMetrics();
+            int textWidth = fm.stringWidth(textoGameOver);
+            int textHeight = fm.getHeight();
+
+            int x = (gp.screen_width - textWidth) / 2;
+            int y = (gp.screen_height - textHeight) / 2 + fm.getAscent();
+
+            g2.drawString(textoGameOver, gp.screen_height / 2, gp.screen_width / 2);
+            g2.setFont(new Font("Arial", Font.BOLD, 24));
+            g2.drawString("Pressione 'R' e Reinicie", gp.screen_height / 2, gp.screen_width / 4);
+        }       
     }
 }
 
