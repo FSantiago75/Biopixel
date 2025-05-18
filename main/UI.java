@@ -27,7 +27,7 @@ public class UI {
     BufferedImage plastic1, plastic2, plastic3, plastic4, paper1, paper2, paper3, paper4, bigFire, fire;
     BufferedImage backgroundImage;
     double playTime;
-    double timeLimit = 300.00; //Tempo de jogo
+    double timeLimit = 150.00; //Tempo de jogo
     DecimalFormat dFormat = new DecimalFormat("#0.00");
     public boolean gameOver = false;
     public static boolean showEndGame = false;

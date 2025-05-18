@@ -138,13 +138,13 @@ public class Object {
                     showMessage = false;
                 }
                 break;
-            case "Battery":
+            case "Blueprint":
                 idObject = "default";
-                if (!gp.player.hasBattery) {
-                    message = "Pressione 'E' para pegar bateria";
+                if (!gp.player.hasBlueprint) {
+                    message = "Pressione 'E' para pegar o projeto";
                     showMessage = true;
                     if (keyPressed) {
-                        gp.player.hasBattery = true;
+                        gp.player.hasBlueprint = true;
                         visible = false;
                         showMessage = false;
                     }
@@ -152,11 +152,11 @@ public class Object {
                 break;
                 case "NPC7":
                     idObject = "default";
-                    if (!gp.player.hasBattery) {
-                        message = "A usina está sem energia, precisamos de uma bateria!";
+                    if (!gp.player.hasBlueprint) {
+                        message = "A usina esta poluindo muito e eu perdi meu projeto!";
                         showMessage = true;
                     } else if (!gp.player.usinaRecarregada) {
-                        message = "Pressione 'E' para recarregar a usina!";
+                        message = "Pressione 'E' para entregar o projeto!";
                         showMessage = true;
                         if (keyPressed) {
                             gp.player.usinaRecarregada = true;
