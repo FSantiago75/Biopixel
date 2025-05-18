@@ -25,7 +25,7 @@ public class UI {
     Font maruMonica_80, maruMonica_60, maruMonica_30;
     BufferedImage plastic1, plastic2, plastic3, plastic4, paper1, paper2, paper3, paper4, bigFire, fire;
     double playTime;
-    double timeLimit = 300.00; //Tempo de jogo
+    double timeLimit = 150.00; //Tempo de jogo
     DecimalFormat dFormat = new DecimalFormat("#0.00");
     public boolean gameOver = false;
     public static boolean showEndGame = false;

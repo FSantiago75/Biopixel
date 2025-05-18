@@ -3,7 +3,7 @@ package main;
 import java.util.Random;
 import object.AOBJ_BigFire;
 import object.AOBJ_Fire;
-import object.OBJ_Battery;
+import object.OBJ_Blueprint;
 import object.OBJ_Button;
 import object.OBJ_Can;
 import object.OBJ_NPC1;
@@ -197,7 +197,7 @@ public class AssetSetter {
         gp.obj[40].worldX = 1600;
         gp.obj[40].worldY = 1600;
 
-        gp.obj[41] = new OBJ_Battery(gp);
+        gp.obj[41] = new OBJ_Blueprint(gp);
         gp.obj[41].worldX = 344;
         gp.obj[41].worldY = 1592;
     }

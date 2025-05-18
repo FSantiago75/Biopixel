@@ -17,7 +17,7 @@ public class Player extends Entity {
     public int worldX;
     public boolean boots_on = false;
     public boolean can_on = false;
-    public boolean hasBattery = false;
+    public boolean hasBlueprint = false;
     public boolean usinaRecarregada = false;
     public int fire_num = 0;
     public int paper_num = 0;
