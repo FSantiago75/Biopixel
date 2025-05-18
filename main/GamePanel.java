@@ -114,4 +114,18 @@ public class GamePanel extends JPanel implements Runnable{
         ui.draw(g2);
         g2.dispose();
     }
+
+    public void restartGame() {
+    // Resetar o jogador para a posição inicial
+    player.setDefaultValues(); // Você precisa garantir que esse método exista no Player.java
+
+    // Recriar objetos no mapa
+    for (int i = 0; i < obj.length; i++) {
+        obj[i] = null;
+    }
+    aSetter.setObject(); // Reposiciona objetos no mapa
+
+    // Resetar contador e estado de game over
+    ui.playTime += (double)1/60; // Ou o valor que você deseja para reinício
+}
 }

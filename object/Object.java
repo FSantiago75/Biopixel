@@ -137,8 +137,37 @@ public class Object {
                     showMessage = false;
                 }
                 break;
+            case "Battery":
+                idObject = "default";
+                if (!gp.player.hasBattery) {
+                    message = "Pressione 'E' para pegar bateria";
+                    showMessage = true;
+                    if (keyPressed) {
+                        gp.player.hasBattery = true;
+                        visible = false;
+                        showMessage = false;
+                    }
+                }
+                break;
+                case "NPC7":
+                    idObject = "default";
+                    if (!gp.player.hasBattery) {
+                        message = "A usina está sem energia, precisamos de uma bateria!";
+                        showMessage = true;
+                    } else if (!gp.player.usinaRecarregada) {
+                        message = "Pressione 'E' para recarregar a usina!";
+                        showMessage = true;
+                        if (keyPressed) {
+                            gp.player.usinaRecarregada = true;
+                            showMessage = false;
+                            // Adicione aqui a lógica de vitória, por exemplo:
+                            gp.ui.gameOver = true;
+                            gp.ui.message = "Parabéns! Você salvou a cidade!";
+                        }
+                    }
+                    break;
+            }
         }
-    }
 
     public void draw(Graphics2D g2, GamePanel gp) {   
         if (!visible) return;
