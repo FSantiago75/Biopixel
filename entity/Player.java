@@ -188,7 +188,7 @@ public class Player extends Entity {
         }
         
         // Mostrar coordenadas do player
-        System.out.println("Player X: " + world_x + " Y: " + world_y);
+        //System.out.println("Player X: " + world_x + " Y: " + world_y);
         
         sprite_counter++;
         

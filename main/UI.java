@@ -22,167 +22,185 @@ import object.Object;
 
 public class UI {
     GamePanel gp;
-    Font maruMonica;
-    Font pixelFont_20;
+    Font maruMonica_80, maruMonica_60, maruMonica_30;
     BufferedImage plastic1, plastic2, plastic3, plastic4, paper1, paper2, paper3, paper4, bigFire, fire;
-    public boolean messageOn = false;
-    public String message = "Press E";
-
     double playTime;
-    double timeLimit = 300.00; // 5 minutos em segundos
+    double timeLimit = 300.00; //Tempo de jogo
     DecimalFormat dFormat = new DecimalFormat("#0.00");
     public boolean gameOver = false;
     public static boolean showEndGame = false;
 
     public UI(GamePanel gp) {
         this.gp = gp;
+        loadFonts();
+        loadImages();
+    }
 
+    private void loadFonts() {
         try {
-            // Carrega a fonte para tamanho 40
-            InputStream is40 = getClass().getResourceAsStream("/res/font/x12y16pxMaruMonica.ttf");
-            maruMonica = Font.createFont(Font.TRUETYPE_FONT, is40).deriveFont(60f); // Aumentei para 80
-            
-            // Carrega a fonte para tamanho 20
-            InputStream is20 = getClass().getResourceAsStream("/res/font/x12y16pxMaruMonica.ttf");
-            pixelFont_20 = Font.createFont(Font.TRUETYPE_FONT, is20).deriveFont(30f); // Aumentei para 40
+            InputStream is = getClass().getResourceAsStream("/res/font/x12y16pxMaruMonica.ttf");
+            Font baseFont = Font.createFont(Font.TRUETYPE_FONT, is);
+            maruMonica_80 = baseFont.deriveFont(80f);
+            maruMonica_60 = baseFont.deriveFont(60f);
+            maruMonica_30 = baseFont.deriveFont(30f);
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();
         }
+    }
 
+    private void loadImages() {
         try {
             plastic1 = new OBJ_Plastic1(gp).image;
             plastic2 = new OBJ_Plastic2(gp).image;
             plastic3 = new OBJ_Plastic3(gp).image;
             plastic4 = new OBJ_Plastic4(gp).image;
-            
             paper1 = new OBJ_Paper1(gp).image;
             paper2 = new OBJ_Paper2(gp).image;
             paper3 = new OBJ_Paper3(gp).image;
             paper4 = new OBJ_Paper4(gp).image;
-
             bigFire = new AOBJ_BigFire(gp).image;
             fire = new AOBJ_Fire(gp).image;
-            
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public int centralizarTexto(String texto, Graphics2D g2) {
-    FontMetrics fm = g2.getFontMetrics();
-    return (gp.screen_height - fm.stringWidth(texto)) / 2;
-}
-
     public void draw(Graphics2D g2) {
-        g2.setFont(maruMonica);
+        drawHUD(g2);
+        drawMessages(g2);
+        drawTimer(g2);
+        drawEndScreen(g2);
+    }
+
+    private void drawHUD(Graphics2D g2) {
+        g2.setFont(maruMonica_60);
         g2.setColor(Color.white);
         
         if(gp.player.plastic_num < gp.player.max_plastic) {
-            if (plastic1 != null) g2.drawImage(plastic1, 0, 20, gp.tile_size, gp.tile_size, null);
-            if (plastic2 != null) g2.drawImage(plastic2, 25, 20, gp.tile_size, gp.tile_size, null);
-            if (plastic3 != null) g2.drawImage(plastic3, 0, 45, gp.tile_size, gp.tile_size, null);
-            if (plastic4 != null) g2.drawImage(plastic4, 25, 45, gp.tile_size, gp.tile_size, null);
-            g2.drawString(gp.player.plastic_num + "/" + gp.player.max_plastic, 90, 85);
+            drawPlasticHUD(g2);
+        } else if(gp.player.paper_num < gp.player.max_paper) {
+            drawPaperHUD(g2);
+        } else if(gp.player.fire_num < gp.player.max_fire) {
+            drawFireHUD(g2);
         }
-        
-        if(gp.player.paper_num < gp.player.max_paper && gp.player.plastic_num == gp.player.max_plastic) {
-            if (paper1 != null) g2.drawImage(paper1, 0, 20, gp.tile_size, gp.tile_size, null);
-            if (paper2 != null) g2.drawImage(paper2, 25, 20, gp.tile_size, gp.tile_size, null);
-            if (paper3 != null) g2.drawImage(paper3, 0, 45, gp.tile_size, gp.tile_size, null);
-            if (paper4 != null) g2.drawImage(paper4, 25, 45, gp.tile_size, gp.tile_size, null);
-            g2.drawString(gp.player.paper_num + "/" + gp.player.max_paper, 90, 85);
-        }
-        
-        if(gp.player.fire_num < gp.player.max_fire && gp.player.paper_num == gp.player.max_paper && gp.player.plastic_num == gp.player.max_plastic) {
-            if (bigFire != null) g2.drawImage(bigFire, 10, 20, gp.tile_size, gp.tile_size, null);
-            if (fire != null) g2.drawImage(fire, 35, 45, gp.tile_size, gp.tile_size, null);
-            g2.drawString(gp.player.fire_num + "/" + gp.player.max_fire, 90, 85);
-        }
+    }
 
-        // Verifica se algum objeto está com showMessage true
+    private void drawPlasticHUD(Graphics2D g2) {
+        if (plastic1 != null) g2.drawImage(plastic1, 0, 20, gp.tile_size, gp.tile_size, null);
+        if (plastic2 != null) g2.drawImage(plastic2, 25, 20, gp.tile_size, gp.tile_size, null);
+        if (plastic3 != null) g2.drawImage(plastic3, 0, 45, gp.tile_size, gp.tile_size, null);
+        if (plastic4 != null) g2.drawImage(plastic4, 25, 45, gp.tile_size, gp.tile_size, null);
+        g2.drawString(gp.player.plastic_num + "/" + gp.player.max_plastic, 90, 85);
+    }
+
+    private void drawPaperHUD(Graphics2D g2) {
+        if (paper1 != null) g2.drawImage(paper1, 0, 20, gp.tile_size, gp.tile_size, null);
+        if (paper2 != null) g2.drawImage(paper2, 25, 20, gp.tile_size, gp.tile_size, null);
+        if (paper3 != null) g2.drawImage(paper3, 0, 45, gp.tile_size, gp.tile_size, null);
+        if (paper4 != null) g2.drawImage(paper4, 25, 45, gp.tile_size, gp.tile_size, null);
+        g2.drawString(gp.player.paper_num + "/" + gp.player.max_paper, 90, 85);
+    }
+
+    private void drawFireHUD(Graphics2D g2) {
+        if (bigFire != null) g2.drawImage(bigFire, 10, 20, gp.tile_size, gp.tile_size, null);
+        if (fire != null) g2.drawImage(fire, 35, 45, gp.tile_size, gp.tile_size, null);
+        g2.drawString(gp.player.fire_num + "/" + gp.player.max_fire, 90, 85);
+    }
+
+    private void drawMessages(Graphics2D g2) {
         for (Object obj : gp.obj) {
-            if (obj != null) {
-
-                if (obj.showMessage && obj.visible) {
-                    g2.setFont(pixelFont_20);
-                    int x = gp.player.screen_x;
-                    // Ajusta a posição da mensagem baseado no tipo do objeto
-                    switch (obj.idObject) {
-                        case "button":
-                            x -= 160;
-                            break;
-                        case "fire":
-                            x -= 60;
-                            break;
-                        case "can":
-                            x -= 140;
-                            break;
-                        case "paper":
-                            x -= 150;
-                            break;
-                        case "boots":
-                            x -= 120;
-                            break;
-                        case "default":
-                            x -= 35;
-                            break;
-                        default:
-                            x -= 35;
-                            break;
-                    }
-                    
-                    g2.drawString(obj.message, x, gp.player.screen_y - 10);
-                    break; // Mostra apenas a mensagem do primeiro objeto com showMessage true
+            if (obj != null && obj.showMessage && obj.visible) {
+                g2.setFont(maruMonica_30);
+                int x = gp.player.screen_x;
+                switch (obj.idObject) {
+                    case "button": x -= 160; break;
+                    case "fire": x -= 60; break;
+                    case "can": x -= 140; break;
+                    case "paper": x -= 150; break;
+                    case "boots": x -= 120; break;
+                    default: x -= 35; break;
                 }
+                g2.drawString(obj.message, x, gp.player.screen_y - 10);
+                break;
             }
         }
+    }
 
-        // Atualiza o tempo de jogo
+    private void drawTimer(Graphics2D g2) {
         if (!gameOver) {
             playTime += (double)1/60;
-            double remainingTime = timeLimit - playTime;
+            double remainingTime = Math.max(0, timeLimit - playTime);
             
-            if (remainingTime <= 0) {
-                remainingTime = 0;
+            if (remainingTime == 0) {
                 gameOver = true;
                 showEndGame = true;
-                // Aqui você pode adicionar a lógica de game over
             }
             
-            // Formata o tempo em minutos:segundos
             int minutes = (int)(remainingTime / 60);
             int seconds = (int)(remainingTime % 60);
-            String timeString = String.format("%02d:%02d", minutes, seconds);
-            
-            g2.setFont(maruMonica);
+            g2.setFont(maruMonica_60);
             g2.setColor(Color.white);
-            g2.drawString(timeString, gp.tile_size * 16, 85);
-        } else if (gameOver){
-            showEndGame = true;
+            g2.drawString(String.format("%02d:%02d", minutes, seconds), gp.tile_size * 16, 85);
         }
+    }
 
+    private void drawEndScreen(Graphics2D g2) {
         if (showEndGame) {
-            // Tela preta
-            g2.setColor(Color.BLACK);
-            g2.fillRect(0, 0, gp.screen_width, gp.screen_height);
+            if (gp.player.usinaRecarregada) {
+                drawWinScreen(g2);
+            } else {
+                drawGameOverScreen(g2);
+            }
+        }
+    }
 
-            // Texto branco centralizado
-            g2.setColor(gp.player.usinaRecarregada ? Color.GREEN : Color.RED);
-            g2.setFont(new Font("Arial", Font.BOLD, 48));
+    private void drawCenteredText(Graphics2D g2, String text, int y, Color color) {
+        FontMetrics fm = g2.getFontMetrics();
+        int x = (gp.screen_width - fm.stringWidth(text)) / 2;
+        g2.setColor(color);
+        g2.drawString(text, x, y);
+    }
 
-            String textoGameOver = gp.player.usinaRecarregada ? "VOCÊ VENCEU, A CIDADE FOI SALVA!" : "GAME OVER";
+    private void drawWinScreen(Graphics2D g2) {
+        g2.setColor(Color.BLACK);
+        g2.fillRect(0, 0, gp.screen_width, gp.screen_height);
 
-            FontMetrics fm = g2.getFontMetrics();
-            int textWidth = fm.stringWidth(textoGameOver);
-            int textHeight = fm.getHeight();
+        g2.setFont(maruMonica_80);
+        FontMetrics fm = g2.getFontMetrics();
+        int y = (gp.screen_height - fm.getHeight()) / 2 + fm.getAscent();
+        
+        drawCenteredText(g2, "A CIDADE FOI SALVA!", y, Color.GREEN);
+        
+        g2.setFont(maruMonica_30);
+        y += 50;
+        drawCenteredText(g2, "Cada atitude conta! Estamos em uma contagem regressiva...", y, new Color(100, 255, 100));
+        y += 30;
+        drawCenteredText(g2, "Um mundo limpo começa com pequenas ações. Obrigado por salvar nosso futuro.", y, new Color(100, 255, 100));
+        y += 50;
+        drawCenteredText(g2, "Pressione 'R' para Reiniciar", y, new Color(100, 255, 100));
+    }
 
-            int x = (gp.screen_width - textWidth) / 2;
-            int y = (gp.screen_height - textHeight) / 2 + fm.getAscent();
+    private void drawGameOverScreen(Graphics2D g2) {
+        g2.setColor(Color.BLACK);
+        g2.fillRect(0, 0, gp.screen_width, gp.screen_height);
 
-            g2.drawString(textoGameOver, gp.screen_height / 2, gp.screen_width / 2);
-            g2.setFont(new Font("Arial", Font.BOLD, 24));
-            g2.drawString("Pressione 'R' e Reinicie", gp.screen_height / 2, gp.screen_width / 4);
-        }       
+        g2.setFont(maruMonica_80);
+        FontMetrics fm = g2.getFontMetrics();
+        int y = (gp.screen_height - fm.getHeight()) / 2 + fm.getAscent();
+        
+        drawCenteredText(g2, "GAME OVER", y, Color.RED);
+        
+        g2.setFont(maruMonica_30);
+        y += 50;
+        drawCenteredText(g2, "De pouco em pouco, o mundo se transforma.", y, new Color(255, 100, 100));
+        y += 30;
+        drawCenteredText(g2, "Quando não agimos a tempo, permitimos que ele definhe.", y, new Color(255, 100, 100));
+        y += 50;
+        drawCenteredText(g2, "Pressione 'R' para Reiniciar", y, new Color(255, 100, 100));
+    }
+
+    public void setEndGame(boolean value) {
+        showEndGame = value;
     }
 }
 
