@@ -63,7 +63,7 @@ public class Object {
                     showMessage = true;
                     if (keyPressed) {
                         visible = false;
-                        gp.tile_manager.loadMap("/res/maps/mapa correto02.csv");
+                        gp.tile_manager.loadMap("/res/maps/mapa2.csv");
                         showMessage = false;
                     }
                 } else {
