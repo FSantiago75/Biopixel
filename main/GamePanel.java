@@ -115,17 +115,26 @@ public class GamePanel extends JPanel implements Runnable{
         g2.dispose();
     }
 
-    public void restartGame() {
-    // Resetar o jogador para a posição inicial
-    player.setDefaultValues(); // Você precisa garantir que esse método exista no Player.java
+    public static void restartApp() {
+    try {
+        // Caminho do executável Java
+        String javaBin = System.getProperty("java.home") + "/bin/java";
 
-    // Recriar objetos no mapa
-    for (int i = 0; i < obj.length; i++) {
-        obj[i] = null;
+        // Caminho da classe principal (main.Game)
+        String className = "main.Game";
+
+        // Caminho do classpath (diretório onde está o código compilado)
+        String classPath = System.getProperty("java.class.path");
+
+        // Constrói o processo para reiniciar o jogo
+        ProcessBuilder builder = new ProcessBuilder(
+            javaBin, "-cp", classPath, className
+        );
+
+        builder.start();
+        System.exit(0); // Encerra o processo atual
+    } catch (Exception e) {
+        e.printStackTrace();
     }
-    aSetter.setObject(); // Reposiciona objetos no mapa
-
-    // Resetar contador e estado de game over
-    ui.playTime += (double)1/60; // Ou o valor que você deseja para reinício
 }
 }

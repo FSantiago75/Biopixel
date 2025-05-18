@@ -9,17 +9,6 @@ public class KeyHandler implements KeyListener{
     public int shift_pressed = 1;
     public String last_direction = "down_idle";
 
-    UI ui;
-    GamePanel gp;
-
-    public KeyHandler() {
-    }
-
-    public KeyHandler(UI ui) {
-        this.ui = ui;
-        this.gp = ui.gp;
-    }
-
     @Override
     public void keyTyped(KeyEvent e) {
     }
@@ -46,13 +35,9 @@ public class KeyHandler implements KeyListener{
         if(code == KeyEvent.VK_E) {
             e_pressed = true;
         }
-        if (e.getKeyCode() == KeyEvent.VK_R && ui.gameOver) {
-        // Se a tecla R for pressionada e o jogo estiver em gameOver
-        // reinicie variáveis do jogo
-        gp.restartGame();
-        ui.gameOver = false;
-        ui.showRestartGame = false;
-    }
+        if(code == KeyEvent.VK_R && UI.showEndGame) {
+            GamePanel.restartApp(); // ou gp.restartGame() dependendo da abordagem escolhida
+        }
     }
 
     @Override
