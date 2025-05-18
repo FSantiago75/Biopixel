@@ -9,15 +9,6 @@ import java.io.InputStream;
 import java.text.DecimalFormat;
 import object.AOBJ_BigFire;
 import object.AOBJ_Fire;
-import object.OBJ_Button;
-import object.OBJ_Can;
-import object.OBJ_NPC1;
-import object.OBJ_NPC2;
-import object.OBJ_NPC3;
-import object.OBJ_NPC4;
-import object.OBJ_NPC5;
-import object.OBJ_NPC6;
-import object.OBJ_NPC7;
 import object.OBJ_Paper1;
 import object.OBJ_Paper2;
 import object.OBJ_Paper3;
@@ -26,7 +17,6 @@ import object.OBJ_Plastic1;
 import object.OBJ_Plastic2;
 import object.OBJ_Plastic3;
 import object.OBJ_Plastic4;
-import object.OBJ_boots;
 import object.Object;
 
 public class UI {
@@ -70,17 +60,6 @@ public class UI {
 
             bigFire = new AOBJ_BigFire(gp).image;
             fire = new AOBJ_Fire(gp).image;
-
-            npc1 = new OBJ_NPC1(gp).image;
-            npc2 = new OBJ_NPC2(gp).image;
-            npc3 = new OBJ_NPC3(gp).image;
-            npc4 = new OBJ_NPC4(gp).image;
-            npc5 = new OBJ_NPC5(gp).image;
-            npc6 = new OBJ_NPC6(gp).image;
-            npc7 = new OBJ_NPC7(gp).image;
-            button = new OBJ_Button(gp).image;
-            can = new OBJ_Can(gp).image;
-            boots = new OBJ_boots(gp).image;
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -115,39 +94,39 @@ public class UI {
 
         // Verifica se algum objeto está com showMessage true
         for (Object obj : gp.obj) {
-            int screenX = obj.worldX - gp.player.world_x + gp.player.screen_x;
-            int screenY = obj.worldY - gp.player.world_y + gp.player.screen_y;
+            if (obj != null) {
 
-            if (obj != null && obj.showMessage && obj.visible) {
-                g2.setFont(pixelFont_20);
-                int x = gp.player.screen_x;
-                // Ajusta a posição da mensagem baseado no tipo do objeto
-                switch (obj.idObject) {
-                    case "button":
-                        x -= 160;
-                        break;
-                    case "fire":
-                        x -= 60;
-                        break;
-                    case "can":
-                        x -= 140;
-                        break;
-                    case "paper":
-                        x -= 150;
-                        break;
-                    case "boots":
-                        x -= 120;
-                        break;
-                    case "default":
-                        x -= 30;
-                        break;
-                    default:
-                        x -= 35;
-                        break;
+                if (obj.showMessage && obj.visible) {
+                    g2.setFont(pixelFont_20);
+                    int x = gp.player.screen_x;
+                    // Ajusta a posição da mensagem baseado no tipo do objeto
+                    switch (obj.idObject) {
+                        case "button":
+                            x -= 160;
+                            break;
+                        case "fire":
+                            x -= 60;
+                            break;
+                        case "can":
+                            x -= 140;
+                            break;
+                        case "paper":
+                            x -= 150;
+                            break;
+                        case "boots":
+                            x -= 120;
+                            break;
+                        case "default":
+                            x -= 35;
+                            break;
+                        default:
+                            x -= 35;
+                            break;
+                    }
+                    
+                    g2.drawString(obj.message, x, gp.player.screen_y - 10);
+                    break; // Mostra apenas a mensagem do primeiro objeto com showMessage true
                 }
-                
-                g2.drawString(obj.message, x, gp.player.screen_y - 10);
-                break; // Mostra apenas a mensagem do primeiro objeto com showMessage true
             }
         }
 
