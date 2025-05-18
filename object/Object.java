@@ -141,7 +141,7 @@ public class Object {
             case "Blueprint":
                 idObject = "default";
                 if (!gp.player.hasBlueprint) {
-                    message = "Pressione 'E' para pegar o projeto";
+                    message = "Pressione 'E'";
                     showMessage = true;
                     if (keyPressed) {
                         gp.player.hasBlueprint = true;
@@ -153,9 +153,11 @@ public class Object {
                 case "NPC7":
                     idObject = "default";
                     if (!gp.player.hasBlueprint) {
+                        idObject = "npc7";
                         message = "A usina esta poluindo muito e eu perdi meu projeto!";
                         showMessage = true;
                     } else if (!gp.player.usinaRecarregada) {
+                        idObject = "npc7Blueprint";
                         message = "Pressione 'E' para entregar o projeto!";
                         showMessage = true;
                         if (keyPressed) {

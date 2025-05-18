@@ -130,6 +130,9 @@ public class UI {
                     case "can": x -= 140; break;
                     case "paper": x -= 150; break;
                     case "boots": x -= 120; break;
+                    case "bluePrint": x -= 120; break;
+                    case "npc7": x -= 250; break;
+                    case "npc7Blueprint": x -= 160; break;
                     default: x -= 35; break;
                 }
                 g2.drawString(obj.message, x, gp.player.screen_y - 10);
@@ -170,7 +173,7 @@ public class UI {
         if (backgroundImage != null) {
             g2.drawImage(backgroundImage, 0, 0, gp.screen_width, gp.screen_height, null);
             
-            g2.setColor(new Color(0, 0, 0, 80));
+            g2.setColor(new Color(0, 0, 0, 150));
             g2.fillRect(0, 0, gp.screen_width, gp.screen_height);
         } else {
             g2.setColor(Color.BLACK);
