@@ -806,7 +806,7 @@ public class TileManager {
                         if (tileId >= 0 && tileId < tile.length) {
                             mapTileNum[col][row] = tileId;
                         } else {
-                            System.out.println("ID inválido encontrado: " + tileId + " na posição [" + col + "," + row + "]");
+                                System.out.println("ID inválido encontrado: " + tileId + " na posição [" + col + "," + row + "]");
                             mapTileNum[col][row] = 0;
                         }
                     }

@@ -3,6 +3,7 @@ package object;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import main.GamePanel;
+import main.UI;
 
 public class Object {
     public BufferedImage image;
@@ -160,9 +161,8 @@ public class Object {
                         if (keyPressed) {
                             gp.player.usinaRecarregada = true;
                             showMessage = false;
-                            // Adicione aqui a lógica de vitória, por exemplo:
                             gp.ui.gameOver = true;
-                            gp.ui.message = "Parabéns! Você salvou a cidade!";
+                            UI.showEndGame = true;
                         }
                     }
                     break;
