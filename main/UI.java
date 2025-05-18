@@ -2,6 +2,7 @@ package main;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -30,7 +31,8 @@ public class UI {
     double playTime;
     double timeLimit = 300.00; // 5 minutos em segundos
     DecimalFormat dFormat = new DecimalFormat("#0.00");
-    boolean gameOver = false;
+    public boolean gameOver = false;
+    public boolean showRestartGame = false;
 
     public UI(GamePanel gp) {
         this.gp = gp;
@@ -65,6 +67,11 @@ public class UI {
             e.printStackTrace();
         }
     }
+
+    public int centralizarTexto(String texto, Graphics2D g2) {
+    FontMetrics fm = g2.getFontMetrics();
+    return (gp.screen_height - fm.stringWidth(texto)) / 2;
+}
 
     public void draw(Graphics2D g2) {
         g2.setFont(maruMonica);
@@ -138,6 +145,7 @@ public class UI {
             if (remainingTime <= 0) {
                 remainingTime = 0;
                 gameOver = true;
+                showRestartGame = true;
                 // Aqui você pode adicionar a lógica de game over
             }
             
@@ -149,6 +157,23 @@ public class UI {
             g2.setFont(maruMonica);
             g2.setColor(Color.white);
             g2.drawString(timeString, gp.tile_size * 16, 85);
+        }
+
+        if (showRestartGame) {
+            g2.setFont(maruMonica);
+            g2.setColor(new Color(0, 0, 0, 150));
+            g2.fillRect(0, 0, gp.screen_height, gp.screen_width);
+
+            g2.setColor(Color.WHITE);
+            g2.setFont(new Font("Arial", Font.BOLD, 48));
+            String textoGameOver = gp.player.usinaRecarregada ? "VOCÊ VENCEU, A CIDADE FOI SALVA!" : "GAME OVER";
+            int x = centralizarTexto(textoGameOver, g2);
+            g2.drawString(textoGameOver, x, gp.screen_width / 2 - 50);
+
+            g2.setFont(new Font("Arial", Font.PLAIN, 24));
+            String textoReiniciar = "Aperte R para reiniciar";
+            x = centralizarTexto(textoReiniciar, g2);
+            g2.drawString(textoReiniciar, x, gp.screen_width / 2);
         }
     }
 }

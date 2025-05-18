@@ -1,6 +1,5 @@
 package entity;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -18,6 +17,8 @@ public class Player extends Entity {
     public int worldX;
     public boolean boots_on = false;
     public boolean can_on = false;
+    public boolean hasBattery = false;
+    public boolean usinaRecarregada = false;
     public int fire_num = 0;
     public int paper_num = 0;
     public int plastic_num = 0;
@@ -44,11 +45,40 @@ public class Player extends Entity {
     }
 
     public void set_default_value() {
-        world_x = gp.tile_size * 70;
-        world_y = gp.tile_size * 48;
-        speed = 2 * gp.scale;
-        direction = "down";
+        setDefaultValues();
     }
+
+    public void setDefaultValues() {
+    // Posição inicial no mundo
+    world_x = gp.tile_size * 70;
+    world_y = gp.tile_size * 48;
+
+    // Velocidade base
+    speed = 2 * gp.scale;
+
+    // Direção inicial
+    direction = "down";
+
+    // Estados do jogador
+    boots_on = false;
+    can_on = false;
+
+    // Coletas e limites
+    fire_num = 0;
+    paper_num = 0;
+    plastic_num = 0;
+    max_paper = 12;
+    max_plastic = 10;
+    max_fire = 8;
+
+    // Sprite inicial
+    sprite_num = 1;
+    sprite_counter = 0;
+
+    // Reset de colisão
+    collisionOn = false;
+}
+
 
     public void get_player_image() {
         try {
