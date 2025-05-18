@@ -48,15 +48,7 @@ public class UI {
             e.printStackTrace();
         }
     }
-    public void showMessage(String text) {
-        message = text;
-        messageOn = true;
-        message_counter = 0;
-    }
-    public void hideMessage() {
-        messageOn = false;
-        message = "";
-    }
+
     public void draw(Graphics2D g2) {
         g2.setFont(arial_40);
         g2.setColor(Color.white);
@@ -66,7 +58,7 @@ public class UI {
             if (plastic2 != null) g2.drawImage(plastic2, 25, 20, gp.tile_size, gp.tile_size, null);
             if (plastic3 != null) g2.drawImage(plastic3, 0, 45, gp.tile_size, gp.tile_size, null);
             if (plastic4 != null) g2.drawImage(plastic4, 25, 45, gp.tile_size, gp.tile_size, null);
-            g2.drawString(gp.player.plastic_num  + "/" + gp.player.max_plastic, 90, 80);
+            g2.drawString(gp.player.plastic_num + "/" + gp.player.max_plastic, 90, 80);
         }
         
         if(gp.player.paper_num < gp.player.max_paper && gp.player.plastic_num == gp.player.max_plastic) {
@@ -87,7 +79,33 @@ public class UI {
         for (Object obj : gp.obj) {
             if (obj != null && obj.showMessage && obj.visible) {
                 g2.setFont(arial_20);
-                g2.drawString("Press E", gp.player.screen_x - 5, gp.player.screen_y - 10);
+                int x = gp.player.screen_x;
+                // Ajusta a posição da mensagem baseado no tipo do objeto
+                switch (obj.idObject) {
+                    case "button":
+                        x -= 120;
+                        break;
+                    case "fire":
+                        x -= 45;
+                        break;
+                    case "can":
+                        x -= 100;
+                        break;
+                    case "paper":
+                        x -= 125;
+                        break;
+                    case "boots":
+                        x -= 95;
+                        break;
+                    case "default":
+                        x -= 30;
+                        break;
+                    default:
+                        x -= 30;
+                        break;
+                }
+                
+                g2.drawString(obj.message, x, gp.player.screen_y - 10);
                 break; // Mostra apenas a mensagem do primeiro objeto com showMessage true
             }
         }
