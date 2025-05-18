@@ -5,6 +5,15 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import object.AOBJ_BigFire;
 import object.AOBJ_Fire;
+import object.OBJ_Button;
+import object.OBJ_Can;
+import object.OBJ_NPC1;
+import object.OBJ_NPC2;
+import object.OBJ_NPC3;
+import object.OBJ_NPC4;
+import object.OBJ_NPC5;
+import object.OBJ_NPC6;
+import object.OBJ_NPC7;
 import object.OBJ_Paper1;
 import object.OBJ_Paper2;
 import object.OBJ_Paper3;
@@ -13,13 +22,14 @@ import object.OBJ_Plastic1;
 import object.OBJ_Plastic2;
 import object.OBJ_Plastic3;
 import object.OBJ_Plastic4;
+import object.OBJ_boots;
 import object.Object;
 
 public class UI {
     GamePanel gp;
     Font arial_40;
     Font arial_20;
-    BufferedImage plastic1, plastic2, plastic3, plastic4, paper1, paper2, paper3, paper4, bigFire, fire;
+    BufferedImage plastic1, plastic2, plastic3, plastic4, paper1, paper2, paper3, paper4, bigFire, fire, npc1, npc2, npc3, npc4, npc5, npc6, npc7, button, can, boots;
     public boolean messageOn = false;
     public String message = "Press E";
     public double message_counter = 0;
@@ -43,6 +53,18 @@ public class UI {
 
             bigFire = new AOBJ_BigFire(gp).image;
             fire = new AOBJ_Fire(gp).image;
+
+            npc1 = new OBJ_NPC1(gp).image;
+            npc2 = new OBJ_NPC2(gp).image;
+            npc3 = new OBJ_NPC3(gp).image;
+            npc4 = new OBJ_NPC4(gp).image;
+            npc5 = new OBJ_NPC5(gp).image;
+            npc6 = new OBJ_NPC6(gp).image;
+            npc7 = new OBJ_NPC7(gp).image;
+            button = new OBJ_Button(gp).image;
+            can = new OBJ_Can(gp).image;
+            boots = new OBJ_boots(gp).image;
+            
         } catch (Exception e) {
             System.err.println("Erro ao carregar imagens: " + e.getMessage());
             e.printStackTrace();
@@ -85,11 +107,34 @@ public class UI {
 
         // Verifica se algum objeto está com showMessage true
         for (Object obj : gp.obj) {
+            int screenX = obj.worldX - gp.player.world_x + gp.player.screen_x;
+            int screenY = obj.worldY - gp.player.world_y + gp.player.screen_y;
+
             if (obj != null && obj.showMessage && obj.visible) {
                 g2.setFont(arial_20);
                 g2.drawString("Press E", gp.player.screen_x - 5, gp.player.screen_y - 10);
                 break; // Mostra apenas a mensagem do primeiro objeto com showMessage true
-            }
+            } else if (obj instanceof OBJ_NPC2) {
+            g2.drawString("Miaaaauu :3!", screenX, screenY - 10);
+            } else if (obj instanceof OBJ_NPC3) {
+            g2.drawString("0-0", screenX, screenY - 10);
+            } else if (obj instanceof OBJ_NPC4) {
+            g2.drawString("Tem tanto lixo nas ruas que vou me atrasar para o Ballet", screenX, screenY - 10);
+            } else if (obj instanceof OBJ_NPC5) {
+            g2.drawString("Meow :3", screenX, screenY - 10);
+            } else if (obj instanceof OBJ_NPC6) {
+            g2.drawString("Ei amigo, você pode limpar todo esse lixo para nós por favor ?", screenX, screenY - 10);
+            } else if (obj instanceof OBJ_NPC7) {
+            g2.drawString("A energia do centro cortou, ligue novamente para tratarmos o esgoto e limpar a agua", screenX, screenY - 10);
+            } else if (obj instanceof OBJ_Button) {
+            g2.drawString("Apague todos os fogos antes que vir aqui!", screenX, screenY - 10);
+            } else if (obj instanceof OBJ_Can) {
+            g2.drawString("Lata encontrada!", screenX, screenY - 10);
+            } else if (obj instanceof OBJ_boots) {
+            g2.drawString("Te permite correr!", screenX, screenY - 10);
+            } else if (obj instanceof OBJ_NPC1) {
+            g2.drawString("A galera da cidade vive reclamando do meu carro!", screenX, screenY - 10);
+        } 
         }
     }
 }
