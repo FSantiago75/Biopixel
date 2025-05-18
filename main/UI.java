@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
+import javax.imageio.ImageIO;
 import object.AOBJ_BigFire;
 import object.AOBJ_Fire;
 import object.OBJ_Paper1;
@@ -24,6 +25,7 @@ public class UI {
     GamePanel gp;
     Font maruMonica_80, maruMonica_60, maruMonica_30;
     BufferedImage plastic1, plastic2, plastic3, plastic4, paper1, paper2, paper3, paper4, bigFire, fire;
+    BufferedImage backgroundImage;
     double playTime;
     double timeLimit = 300.00; //Tempo de jogo
     DecimalFormat dFormat = new DecimalFormat("#0.00");
@@ -34,6 +36,7 @@ public class UI {
         this.gp = gp;
         loadFonts();
         loadImages();
+        loadBackground();
     }
 
     private void loadFonts() {
@@ -61,6 +64,15 @@ public class UI {
             bigFire = new AOBJ_BigFire(gp).image;
             fire = new AOBJ_Fire(gp).image;
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadBackground() {
+        try {
+            backgroundImage = ImageIO.read(getClass().getResourceAsStream("/res/images/images.png"));
+        } catch (IOException e) {
+            System.out.println("Erro ao carregar imagem de fundo: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -154,6 +166,18 @@ public class UI {
         }
     }
 
+    private void drawBackground(Graphics2D g2) {
+        if (backgroundImage != null) {
+            g2.drawImage(backgroundImage, 0, 0, gp.screen_width, gp.screen_height, null);
+            
+            g2.setColor(new Color(0, 0, 0, 80));
+            g2.fillRect(0, 0, gp.screen_width, gp.screen_height);
+        } else {
+            g2.setColor(Color.BLACK);
+            g2.fillRect(0, 0, gp.screen_width, gp.screen_height);
+        }
+    }
+
     private void drawCenteredText(Graphics2D g2, String text, int y, Color color) {
         FontMetrics fm = g2.getFontMetrics();
         int x = (gp.screen_width - fm.stringWidth(text)) / 2;
@@ -162,8 +186,7 @@ public class UI {
     }
 
     private void drawWinScreen(Graphics2D g2) {
-        g2.setColor(Color.BLACK);
-        g2.fillRect(0, 0, gp.screen_width, gp.screen_height);
+        drawBackground(g2);
 
         g2.setFont(maruMonica_80);
         FontMetrics fm = g2.getFontMetrics();
@@ -181,8 +204,7 @@ public class UI {
     }
 
     private void drawGameOverScreen(Graphics2D g2) {
-        g2.setColor(Color.BLACK);
-        g2.fillRect(0, 0, gp.screen_width, gp.screen_height);
+        drawBackground(g2);
 
         g2.setFont(maruMonica_80);
         FontMetrics fm = g2.getFontMetrics();

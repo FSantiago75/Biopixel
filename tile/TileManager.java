@@ -19,7 +19,7 @@ public class TileManager {
         tile = new Tile[num_tile];
         mapTileNum = new int[gp.max_world_col][gp.max_world_row];
         getTileImage();
-        loadMap("/res/maps/mapa1.csv");
+        loadMap("/res/maps/mapa2.csv");
     }
 
     public void getTileImage() {
