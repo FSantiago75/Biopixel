@@ -784,6 +784,78 @@ public class TileManager {
             tile[217].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/fence6.png"));
             tile[217].colision = true;
 
+            tile[218] = new Tile();
+            tile[218].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/maze1.png"));
+            tile[218].colision = true;
+
+            tile[219] = new Tile();
+            tile[219].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/maze2.png"));
+            tile[219].colision = true;
+
+            tile[220] = new Tile();
+            tile[220].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/maze3.png"));
+            tile[220].colision = true;
+
+            tile[221] = new Tile();
+            tile[221].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/maze4.png"));
+            tile[221].colision = true;
+
+            tile[222] = new Tile();
+            tile[222].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/maze5.png"));
+            tile[222].colision = true;
+
+            tile[223] = new Tile();
+            tile[223].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/maze6.png"));
+            tile[223].colision = true;
+
+            tile[224] = new Tile();
+            tile[224].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/maze7.png"));
+            tile[224].colision = true;
+
+            tile[225] = new Tile();
+            tile[225].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/maze8.png")); 
+            tile[225].colision = true;
+
+            tile[226] = new Tile();
+            tile[226].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/maze9.png"));
+            tile[226].colision = true;
+
+            tile[227] = new Tile();
+            tile[227].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/maze10.png"));
+            tile[227].colision = true;  
+
+            tile[228] = new Tile();
+            tile[228].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/maze11.png"));
+            tile[228].colision = true;
+
+            tile[229] = new Tile();
+            tile[229].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/maze12.png"));
+            tile[229].colision = true;
+
+            tile[230] = new Tile();
+            tile[230].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/maze13.png"));
+            tile[230].colision = true;
+
+            tile[231] = new Tile();
+            tile[231].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/maze14.png"));
+            tile[231].colision = true;
+
+            tile[232] = new Tile();
+            tile[232].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/maze15.png"));
+            tile[232].colision = true;
+
+            tile[233] = new Tile();
+            tile[233].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/maze16.png"));
+            tile[233].colision = true;
+
+            tile[234] = new Tile();
+            tile[234].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/maze17.png"));
+            tile[234].colision = true;
+
+            tile[235] = new Tile();
+            tile[235].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/maze18.png"));
+            tile[235].colision = true;
+
         } catch (IOException e) {
             e.printStackTrace();
         }

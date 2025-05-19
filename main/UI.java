@@ -27,10 +27,12 @@ public class UI {
     BufferedImage plastic1, plastic2, plastic3, plastic4, paper1, paper2, paper3, paper4, bigFire, fire;
     BufferedImage backgroundImage;
     double playTime;
-    double timeLimit = 180.00; //Tempo de jogo
+    double timeLimit = 300; //Tempo de jogo
     DecimalFormat dFormat = new DecimalFormat("#0.00");
     public boolean gameOver = false;
     public static boolean showEndGame = false;
+    BufferedImage backgroundWinImage;
+    BufferedImage backgroundLoseImage;
 
     public UI(GamePanel gp) {
         this.gp = gp;
@@ -70,9 +72,10 @@ public class UI {
 
     private void loadBackground() {
         try {
-            backgroundImage = ImageIO.read(getClass().getResourceAsStream("/res/images/images.png"));
+            backgroundWinImage = ImageIO.read(getClass().getResourceAsStream("/res/images/fimbom (2).png"));
+            backgroundLoseImage = ImageIO.read(getClass().getResourceAsStream("/res/images/fimruim (2).png"));
         } catch (IOException e) {
-            System.out.println("Erro ao carregar imagem de fundo: " + e.getMessage());
+            System.out.println("Erro ao carregar imagem de fundo de fim de jogo: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -189,14 +192,15 @@ public class UI {
     }
 
     private void drawWinScreen(Graphics2D g2) {
+        backgroundImage = backgroundWinImage;
         drawBackground(g2);
 
         g2.setFont(maruMonica_80);
         FontMetrics fm = g2.getFontMetrics();
         int y = (gp.screen_height - fm.getHeight()) / 2 + fm.getAscent();
-        
+
         drawCenteredText(g2, "A CIDADE FOI SALVA!", y, Color.GREEN);
-        
+
         g2.setFont(maruMonica_30);
         y += 50;
         drawCenteredText(g2, "Cada atitude conta! Estamos em uma contagem regressiva...", y, new Color(100, 255, 100));
@@ -207,14 +211,15 @@ public class UI {
     }
 
     private void drawGameOverScreen(Graphics2D g2) {
+        backgroundImage = backgroundLoseImage;
         drawBackground(g2);
 
         g2.setFont(maruMonica_80);
         FontMetrics fm = g2.getFontMetrics();
         int y = (gp.screen_height - fm.getHeight()) / 2 + fm.getAscent();
-        
+
         drawCenteredText(g2, "GAME OVER", y, Color.RED);
-        
+
         g2.setFont(maruMonica_30);
         y += 50;
         drawCenteredText(g2, "De pouco em pouco, o mundo se transforma.", y, new Color(255, 100, 100));
