@@ -176,8 +176,14 @@ public class UI {
         if (backgroundImage != null) {
             g2.drawImage(backgroundImage, 0, 0, gp.screen_width, gp.screen_height, null);
             
-            g2.setColor(new Color(0, 0, 0, 150));
-            g2.fillRect(0, 0, gp.screen_width, gp.screen_height);
+            if (backgroundImage == backgroundWinImage) {
+                g2.setColor(new Color(0, 0, 0, 150));
+                g2.fillRect(0, 0, gp.screen_width, gp.screen_height);
+            }
+            else {
+                g2.setColor(new Color(0, 0, 0, 20));
+                g2.fillRect(0, 0, gp.screen_width, gp.screen_height);
+            }
         } else {
             g2.setColor(Color.BLACK);
             g2.fillRect(0, 0, gp.screen_width, gp.screen_height);
